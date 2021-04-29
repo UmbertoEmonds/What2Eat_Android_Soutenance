@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">What2Eat</string>
+
+    <!-- activity-login -->
+    <string name="connexion">Se connecter</string>
+    <string name="email">E-mail</string>
+    <string name="password">Mot de passe</string>
+    <string name="go_register">Toujours pas de compte ? Inscrivez-vous</string>
+
+    <!-- activity-register -->
+    <string name="inscription">S\'inscrire</string>
+    <string name="go_login">Vous avez déjà un compte ? Connectez-vous !</string>
+    <string name="lastname">Nom</string>
+    <string name="name">Prénom</string>
+    <string name="password_confirm">Confirmation du mot de passe</string>
+
+</resources>
