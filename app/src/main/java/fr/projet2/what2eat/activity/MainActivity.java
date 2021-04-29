@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
 
         // SI UTILISATEUR CONNECTE ENVOYER DIRECTEMENT VERS PAGE ACCUEIL (frigo ou recettes ?)
+        
 
     }
 }
