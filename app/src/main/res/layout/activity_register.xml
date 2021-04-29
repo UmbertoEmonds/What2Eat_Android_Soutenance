@@ -56,7 +56,7 @@
                 android:textColorHint="#FFFFFF" />
 
             <EditText
-                android:id="@+id/editTextTextEmail"
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
@@ -70,7 +70,7 @@
                 android:textColorHint="#FFFFFF" />
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
@@ -84,7 +84,7 @@
                 android:textColorHint="#FFFFFF" />
 
             <EditText
-                android:id="@+id/editTextTextPasswordConfirm"
+                android:id="@+id/editTextPasswordConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"

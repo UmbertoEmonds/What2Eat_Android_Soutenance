@@ -5,6 +5,7 @@
     <string name="connexion">Se connecter</string>
     <string name="email">E-mail</string>
     <string name="password">Mot de passe</string>
+    <string name="forgot_password">Mot de passe oublié</string>
     <string name="go_register">Toujours pas de compte ? Inscrivez-vous</string>
 
     <!-- activity-register -->
@@ -13,5 +14,10 @@
     <string name="lastname">Nom</string>
     <string name="name">Prénom</string>
     <string name="password_confirm">Confirmation du mot de passe</string>
+
+    <!-- activity-forgot-password -->
+    <string name="reset_password">Réinitialiser mon mot de passe</string>
+    <string name="new_pass">Nouveau mot de passe</string>
+    <string name="reset">Réinitialiser</string>
 
 </resources>
