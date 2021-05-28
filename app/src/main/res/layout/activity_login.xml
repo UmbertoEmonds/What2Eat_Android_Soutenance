@@ -56,6 +56,7 @@
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:padding="10sp"
+                android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF" />
 
             <EditText
@@ -70,6 +71,7 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:padding="10sp"
+                android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF" />
 
             <TextView
