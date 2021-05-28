@@ -18,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, LoginActivity.class);
         startActivity(myIntent);
 
+
+
         // SI UTILISATEUR CONNECTE ENVOYER DIRECTEMENT VERS PAGE ACCUEIL (frigo ou recettes ?)
-        
+
 
     }
 }

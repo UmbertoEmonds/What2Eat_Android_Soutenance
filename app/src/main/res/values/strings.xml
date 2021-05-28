@@ -20,4 +20,10 @@
     <string name="new_pass">Nouveau mot de passe</string>
     <string name="reset">Réinitialiser</string>
 
+    <!-- activity-frigo -->
+    <string name="frigo_title">Mon frigo</string>
+
+    <!-- errors -->
+    <string name="error_get_ingredients">Une erreur s\'est produite lors de la récuperation de votre Frigo.</string>
+
 </resources>
