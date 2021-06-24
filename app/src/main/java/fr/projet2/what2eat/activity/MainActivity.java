@@ -15,10 +15,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // SI L'UTILISATEUR N'EST PAS CONNECTE
-        Intent myIntent = new Intent(this, LoginActivity.class);
+        Intent myIntent = new Intent(this, FrigoActivity.class);
         startActivity(myIntent);
-
-
 
         // SI UTILISATEUR CONNECTE ENVOYER DIRECTEMENT VERS PAGE ACCUEIL (frigo ou recettes ?)
 
