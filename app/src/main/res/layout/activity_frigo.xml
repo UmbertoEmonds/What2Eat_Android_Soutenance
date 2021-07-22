@@ -15,12 +15,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <include
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/frigoRV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/frigo_vide"
             android:foregroundGravity="center"
-            android:paddingTop="100sp" />
+            android:paddingTop="80dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

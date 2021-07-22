@@ -2,6 +2,7 @@ package fr.projet2.what2eat.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextView mForgotPasswordTV;
     private TextView mRegisterTV;
+    private Button mLoginBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mForgotPasswordTV = findViewById(R.id.forgot_password);
         mRegisterTV = findViewById(R.id.register);
+        mLoginBtn = findViewById(R.id.mLoginBtn);
 
         mForgotPasswordTV.setOnClickListener(v -> {
             Intent intent = new Intent(this, ForgotPasswordActivity.class);
@@ -29,6 +32,12 @@ public class LoginActivity extends AppCompatActivity {
 
         mRegisterTV.setOnClickListener(v -> {
             Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+        });
+
+        mLoginBtn.setOnClickListener(v -> {
+            //TODO("Implementer la logique de connexion")
+            Intent intent = new Intent(this, FrigoActivity.class);
             startActivity(intent);
         });
     }
