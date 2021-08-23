@@ -1,4 +1,4 @@
-package fr.projet2.what2eat.repositories;
+package fr.projet2.what2eat.repositories.ingredient;
 import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 import fr.projet2.what2eat.util.RetrofitBuilder;

@@ -18,12 +18,12 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "API_URL", "\"https://60b103b71f26610017fffabd.mockapi.io/what2eat/\"")
+            buildConfigField("String", "API_URL", "\"https://2b95-2a01-cb0c-34-a000-e9d2-f1e-3e28-471.ngrok.io/api/\"")
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "API_URL", "\"https://60b103b71f26610017fffabd.mockapi.io/what2eat/\"")
+            buildConfigField("String", "API_URL", "\"https://2b95-2a01-cb0c-34-a000-e9d2-f1e-3e28-471.ngrok.io/api/\"")
         }
     }
     compileOptions {

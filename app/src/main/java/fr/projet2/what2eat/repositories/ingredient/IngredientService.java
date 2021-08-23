@@ -1,4 +1,4 @@
-package fr.projet2.what2eat.repositories;
+package fr.projet2.what2eat.repositories.ingredient;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 
 public interface IngredientService {
 
-    @GET("/ingredients")
+    @GET("ingredients")
     Call<List<Ingredient>> getIngredients();
 
 }

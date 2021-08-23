@@ -1,14 +1,12 @@
 package fr.projet2.what2eat.viewmodel;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
-import java.util.concurrent.Executor;
 
 import fr.projet2.what2eat.model.Ingredient;
-import fr.projet2.what2eat.repositories.IngredientRepository;
+import fr.projet2.what2eat.repositories.ingredient.IngredientRepository;
 
 public class IngredientViewModel extends ViewModel {
 
