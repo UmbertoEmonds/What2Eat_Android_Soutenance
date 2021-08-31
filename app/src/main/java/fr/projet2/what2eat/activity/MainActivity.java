@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private void verifyToken(String token, int userId){
         mUtilisateurVM.verifyToken(token, userId).observe(this, isValid -> {
 
-            if(isValid){
+            if(isValid != null && isValid){
                 Intent myIntent = new Intent(this, FrigoActivity.class);
                 startActivity(myIntent);
             }else {

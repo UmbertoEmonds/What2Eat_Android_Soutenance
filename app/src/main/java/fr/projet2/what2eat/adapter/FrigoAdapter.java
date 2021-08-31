@@ -50,12 +50,14 @@ class IngredientViewHolder extends RecyclerView.ViewHolder{
 
     private ImageView mIngredientImageIV;
     private TextView mQteTV;
+    private TextView mNameTV;
 
     public IngredientViewHolder(@NonNull View itemView) {
         super(itemView);
 
         mIngredientImageIV = itemView.findViewById(R.id.ingredientImg);
         mQteTV = itemView.findViewById(R.id.qteIngredient);
+        mNameTV = itemView.findViewById(R.id.name);
     }
 
     public void bindView(Ingredient ingredient){
@@ -66,6 +68,7 @@ class IngredientViewHolder extends RecyclerView.ViewHolder{
         builder.build().load(ingredient.getUrlImage()).into(mIngredientImageIV);
 
         mQteTV.setText(String.valueOf(ingredient.getQuantite()));
+        mNameTV.setText(ingredient.getNom());
     }
 
 }

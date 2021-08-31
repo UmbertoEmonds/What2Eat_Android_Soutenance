@@ -3,6 +3,9 @@ package fr.projet2.what2eat.repositories.utilisateur;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.List;
+
+import fr.projet2.what2eat.model.Ingredient;
 import fr.projet2.what2eat.model.Utilisateur;
 import fr.projet2.what2eat.util.RetrofitBuilder;
 import retrofit2.Call;
@@ -13,10 +16,12 @@ public class UtilisateurRepository {
 
     private final MutableLiveData<Utilisateur> utilisateur;
     private final MutableLiveData<Boolean> isValidToken;
+    private final MutableLiveData<List<Ingredient>> ingredients;
 
     public UtilisateurRepository(){
         this.utilisateur = new MutableLiveData<>();
         this.isValidToken = new MutableLiveData<>();
+        this.ingredients = new MutableLiveData<>();
     }
 
     public MutableLiveData<Utilisateur> login(String email, String password){
@@ -50,11 +55,29 @@ public class UtilisateurRepository {
 
             @Override
             public void onFailure(Call<Boolean> call, Throwable t) {
-                isValidToken.postValue(false);
+                isValidToken.setValue(false);
             }
         });
 
         return isValidToken;
+    }
+
+    public MutableLiveData<List<Ingredient>> getIngredients(String token, int userId){
+        UtilisateurService service = RetrofitBuilder.getInstance().create(UtilisateurService.class);
+
+        service.getIngredients(token, userId).enqueue(new Callback<List<Ingredient>>() {
+            @Override
+            public void onResponse(Call<List<Ingredient>> call, Response<List<Ingredient>> response) {
+                ingredients.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Ingredient>> call, Throwable t) {
+                ingredients.setValue(null);
+            }
+        });
+
+        return ingredients;
     }
 
 }

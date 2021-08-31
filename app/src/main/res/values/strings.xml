@@ -23,6 +23,7 @@
 
     <!-- activity-frigo -->
     <string name="frigo_title">Mon frigo</string>
+    <string name="cuisine_title">Dans ma cuisine, il y a…</string>
 
     <!-- errors -->
     <string name="error_get_ingredients">Une erreur s\'est produite lors de la récuperation de votre Frigo.</string>

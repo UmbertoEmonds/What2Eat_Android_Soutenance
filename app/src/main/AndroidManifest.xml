@@ -28,12 +28,13 @@
         <activity android:name=".activity.RegisterActivity"
                   android:theme="@style/Theme.What2EatNoStatusBar">
         </activity>
-
         <activity android:name=".activity.ProfileActivity"
             android:theme="@style/Theme.What2EatNoStatusBar">
         </activity>
-
         <activity android:name=".activity.FrigoActivity"
+            android:theme="@style/Theme.What2EatNoStatusBar">
+        </activity>
+        <activity android:name=".activity.AddIngredientActivity"
             android:theme="@style/Theme.What2EatNoStatusBar">
         </activity>
     </application>
