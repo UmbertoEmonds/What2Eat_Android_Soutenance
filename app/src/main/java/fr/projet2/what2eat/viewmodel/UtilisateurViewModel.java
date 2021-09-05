@@ -7,7 +7,7 @@ import java.util.List;
 
 import fr.projet2.what2eat.model.Ingredient;
 import fr.projet2.what2eat.model.Utilisateur;
-import fr.projet2.what2eat.repositories.utilisateur.UtilisateurRepository;
+import fr.projet2.what2eat.repositories.UtilisateurRepository;
 
 public class UtilisateurViewModel extends ViewModel {
 

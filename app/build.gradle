@@ -18,12 +18,16 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "API_URL", "\"https://d9a9-2a01-cb0c-34-a000-281c-aa9f-5421-2bad.ngrok.io/api/\"")
+            buildConfigField("String", "API_URL", "\"https://91c2-2a01-cb0c-34-a000-74c2-f295-c2b1-a3ea.ngrok.io/api/\"")
+            buildConfigField("String", "OPEN_FOOD_API", "\"https://www.foodrepo.org/api/v3/\"")
+            buildConfigField("String", "OPEN_FOOD_API_KEY", "\"fbb65ef97703ddc4f5bf4dcfbecd8e76\"")
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "API_URL", "\"https://d9a9-2a01-cb0c-34-a000-281c-aa9f-5421-2bad.ngrok.io/api/\"")
+            buildConfigField("String", "API_URL", "\"https://91c2-2a01-cb0c-34-a000-74c2-f295-c2b1-a3ea.ngrok.io/api/\"")
+            buildConfigField("String", "OPEN_FOOD_API", "\"https://www.foodrepo.org/api/v3/\"")
+            buildConfigField("String", "OPEN_FOOD_API_KEY", "\"fbb65ef97703ddc4f5bf4dcfbecd8e76\"")
         }
     }
     compileOptions {
@@ -33,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation 'me.dm7.barcodescanner:zbar:1.9.13'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'

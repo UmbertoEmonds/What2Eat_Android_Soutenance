@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera"/>
 
     <application
         android:allowBackup="true"
@@ -34,7 +36,7 @@
         <activity android:name=".activity.FrigoActivity"
             android:theme="@style/Theme.What2EatNoStatusBar">
         </activity>
-        <activity android:name=".activity.AddIngredientActivity"
+        <activity android:name=".activity.AddIngredientCameraActivity"
             android:theme="@style/Theme.What2EatNoStatusBar">
         </activity>
     </application>

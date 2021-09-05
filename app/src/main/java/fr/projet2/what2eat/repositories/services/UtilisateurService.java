@@ -1,4 +1,4 @@
-package fr.projet2.what2eat.repositories.utilisateur;
+package fr.projet2.what2eat.repositories.services;
 
 import java.util.List;
 

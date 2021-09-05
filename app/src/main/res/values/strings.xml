@@ -28,4 +28,13 @@
     <!-- errors -->
     <string name="error_get_ingredients">Une erreur s\'est produite lors de la récuperation de votre Frigo.</string>
 
+    <!-- scanner-result-dialog-fragment  -->
+    <string name="dialog_title">Produit trouvé !</string>
+    <string name="dialog_title_error">Produit introuvable</string>
+    <string name="dialog_title_error_message">Désolé, nous n\'avons pas été en mesure de trouver ce produit. Souhaitez-vous enregistrer manuellement le produit ?</string>
+    <string name="dialog_error_cancel">Annuler</string>
+    <string name="dialog_error_dismiss">Retour</string>
+    <string name="dialog_error_add">Ajouter manuellement</string>
+    <string name="dialog_add">Ajouter à mes ingredients</string>
+
 </resources>

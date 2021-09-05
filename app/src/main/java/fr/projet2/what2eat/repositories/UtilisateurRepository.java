@@ -1,12 +1,13 @@
-package fr.projet2.what2eat.repositories.utilisateur;
+package fr.projet2.what2eat.repositories;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
+import fr.projet2.what2eat.BuildConfig;
 import fr.projet2.what2eat.model.Ingredient;
 import fr.projet2.what2eat.model.Utilisateur;
+import fr.projet2.what2eat.repositories.services.UtilisateurService;
 import fr.projet2.what2eat.util.RetrofitBuilder;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +27,7 @@ public class UtilisateurRepository {
 
     public MutableLiveData<Utilisateur> login(String email, String password){
 
-        UtilisateurService service = RetrofitBuilder.getInstance().create(UtilisateurService.class);
+        UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
 
         service.login(email, password).enqueue(new Callback<Utilisateur>() {
             @Override
@@ -45,7 +46,7 @@ public class UtilisateurRepository {
 
     public MutableLiveData<Boolean> verifyToken(String token, int userId){
 
-        UtilisateurService service = RetrofitBuilder.getInstance().create(UtilisateurService.class);
+        UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
 
         service.verifyToken(token, userId).enqueue(new Callback<Boolean>() {
             @Override
@@ -63,7 +64,7 @@ public class UtilisateurRepository {
     }
 
     public MutableLiveData<List<Ingredient>> getIngredients(String token, int userId){
-        UtilisateurService service = RetrofitBuilder.getInstance().create(UtilisateurService.class);
+        UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
 
         service.getIngredients(token, userId).enqueue(new Callback<List<Ingredient>>() {
             @Override

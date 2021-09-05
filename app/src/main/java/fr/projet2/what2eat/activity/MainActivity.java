@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 goToLoginActivity();
             }
+
+            mUtilisateurVM.verifyToken(token, userId).removeObservers(this);
         });
     }
 
