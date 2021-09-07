@@ -46,7 +46,7 @@ public class FrigoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frigo);
 
-        mFrigoRV = findViewById(R.id.frigoRV);
+        /*mFrigoRV = findViewById(R.id.frigoRV);
         mProfileBtn = findViewById(R.id.profile_image_toolbar);
         mFAB = findViewById(R.id.frigoFAB);
 
@@ -75,7 +75,7 @@ public class FrigoActivity extends AppCompatActivity {
                 // ajout manuel de l'ingredient
             }
         });
-
+        */
     }
 
     private void configureViewModel(){

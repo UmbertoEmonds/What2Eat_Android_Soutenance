@@ -33,7 +33,7 @@
                 android:id="@+id/searchView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/RectWhite">
+                android:background="@drawable/rectwhite">
 
             </SearchView>
 
@@ -55,14 +55,14 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10"
-                android:layout_marginTop="10"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="10px"
                 android:text="Catégories :" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100px"
-                android:layout_marginTop="10"
+                android:layout_marginTop="10px"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -70,7 +70,7 @@
                     android:id="@+id/Blegumes"
                     android:layout_width="180px"
                     android:layout_height="100px"
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:background="@drawable/legumes" />
 
                 <Button
@@ -78,7 +78,7 @@
                     android:layout_width="180px"
                     android:layout_height="100px"
 
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:background="@drawable/meat" />
 
                 <Button
@@ -86,7 +86,7 @@
                     android:layout_width="180px"
                     android:layout_height="100px"
 
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:background="@drawable/conserve" />
 
                 <Button
@@ -94,7 +94,7 @@
                     android:layout_width="180px"
                     android:layout_height="100px"
 
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:background="@drawable/fruits" />
 
                 <Button
@@ -102,7 +102,7 @@
                     android:layout_width="180px"
                     android:layout_height="100px"
 
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:background="@drawable/lait" />
 
             </LinearLayout>
@@ -117,7 +117,7 @@
                     android:id="@+id/textView9"
                     android:layout_width="180px"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:gravity="center"
                     android:text="Légumes" />
 
@@ -125,7 +125,7 @@
                     android:id="@+id/textView10"
                     android:layout_width="180px"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:gravity="center"
                     android:text="Viandes" />
 
@@ -133,7 +133,7 @@
                     android:id="@+id/textView11"
                     android:layout_width="180px"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:gravity="center"
                     android:text="Conserves" />
 
@@ -141,7 +141,7 @@
                     android:id="@+id/textView13"
                     android:layout_width="180px"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:gravity="center"
                     android:text="Fruits" />
 
@@ -149,7 +149,7 @@
                     android:id="@+id/textView12"
                     android:layout_width="180px"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2"
+                    android:layout_margin="2px"
                     android:gravity="center"
                     android:text="Crémeries" />
             </LinearLayout>
@@ -157,7 +157,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10"
+                android:layout_margin="10px"
                 android:orientation="horizontal">
 
                 <LinearLayout
