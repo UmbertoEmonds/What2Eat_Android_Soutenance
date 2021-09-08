@@ -19,6 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -106,17 +110,10 @@ public class FrigoActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // depuis AddIngredientCameraActivity
-        if(requestCode == 45){
-            if(data != null){
-                Bundle bundle = data.getExtras();
-                Ingredient ingredientAdded = (Ingredient) bundle.getSerializable("INGREDIENT_ADDED");
-            }
-        }
+    @Subscribe(sticky = true, threadMode = ThreadMode.ASYNC)
+    public void onIngredientAddedEvent(Ingredient ingredient){
+        this.ingredientList.add(ingredient);
+        this.frigoAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -127,8 +124,20 @@ public class FrigoActivity extends AppCompatActivity {
         if(requestCode == 100){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 Intent intent = new Intent(this, AddIngredientCameraActivity.class);
-                startActivityForResult(intent, 45);
+                startActivity(intent);
             }
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
     }
 }
