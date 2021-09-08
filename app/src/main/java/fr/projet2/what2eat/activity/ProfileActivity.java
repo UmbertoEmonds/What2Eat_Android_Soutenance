@@ -1,8 +1,10 @@
 package fr.projet2.what2eat.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.regex.Pattern;
 
@@ -32,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
     private boolean isOnEditMode = false;
     private  TextView mEditErreur;
     private UtilisateurViewModel mUserVM;
+    private ImageView mBackBtn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +50,13 @@ public class ProfileActivity extends AppCompatActivity {
         mConfirmBtn = findViewById(R.id.mConfirmBtn);
         mCancelBtn = findViewById(R.id.mCancelBtn);
         mEditErreur = findViewById(R.id.editErreur);
+
+        mBackBtn = findViewById(R.id.BackBtn);
+
+        mBackBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, FrigoActivity.class);
+            startActivity(intent);
+        });
 
         mEditProfileInfosIV.setOnClickListener(v -> {
             if(isOnEditMode){
@@ -88,6 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
             changeVisibily(View.INVISIBLE);
 
         });
+        configureViewModel();
         getIngredients();
 
     }
@@ -107,11 +120,12 @@ public class ProfileActivity extends AppCompatActivity {
         int userId = sharedPref.getInt("userId", -1);
 
         mUserVM.getUtilisateur(token, userId).observe(this, utilisateur ->  {
+            if(utilisateur != null){
             mFirstNameET.setText(utilisateur.getPrenom());
             mLastNameET.setText(utilisateur.getNom());
             mMailET.setText(utilisateur.getNom());
             mUserVM.verifyToken(token, userId).removeObservers(this);
-
+            }
         });
     }
 }

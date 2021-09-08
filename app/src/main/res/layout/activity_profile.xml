@@ -13,14 +13,43 @@
         android:background="@drawable/fondsable"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/editProfileInfo"
-            android:layout_width="30sp"
-            android:layout_height="30sp"
-            android:layout_gravity="end"
-            android:layout_marginTop="20sp"
-            android:layout_marginEnd="20sp"
-            app:srcCompat="@drawable/outline_edit_black_20" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/BackBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20sp"
+                    app:srcCompat="?attr/homeAsUpIndicator" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/editProfileInfo"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="20sp"
+                    app:srcCompat="@drawable/outline_edit_black_20" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
@@ -72,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20sp"
                     android:layout_weight="9"
-                    android:background="@drawable/custom_edit_text"
+                    android:background="@drawable/custom_edit_text_white"
                     android:editable="false"
                     android:ems="10"
                     android:enabled="false"
@@ -109,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10sp"
                     android:layout_weight="9"
-                    android:background="@drawable/custom_edit_text"
+                    android:background="@drawable/custom_edit_text_white"
                     android:editable="false"
                     android:ems="10"
                     android:enabled="false"
@@ -146,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20sp"
                     android:layout_weight="9"
-                    android:background="@drawable/custom_edit_text"
+                    android:background="@drawable/custom_edit_text_white"
                     android:editable="false"
                     android:ems="10"
                     android:enabled="false"
@@ -191,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20sp"
                     android:layout_weight="9"
-                    android:background="@drawable/custom_edit_text"
+                    android:background="@drawable/custom_edit_text_white"
                     android:editable="false"
                     android:ems="10"
                     android:inputType="text"
@@ -227,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20sp"
                     android:layout_weight="9"
-                    android:background="@drawable/custom_edit_text"
+                    android:background="@drawable/custom_edit_text_white"
                     android:editable="false"
                     android:ems="10"
                     android:inputType="text"
