@@ -93,7 +93,7 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
 
     public void addIngredient(String token, int userId, Ingredient ingredientToAdd){
         mIngredientVM.addIngredient(token, userId, ingredientToAdd).observe(this, ingredient -> {
-            
+            finish();
             mIngredientVM.addIngredient(token, userId, ingredientToAdd).removeObservers(this);
         });
     }

@@ -63,9 +63,9 @@ public class ScannerResultDialogFragment extends DialogFragment {
 
                         Ingredient ingredientToAdd = Mapping.mapOpenFoodToIngredient(ingredient);
 
-                        parentActivity.addIngredient(token, userId, ingredientToAdd);
                         dialog.dismiss();
 
+                        parentActivity.addIngredient(token, userId, ingredientToAdd);
                     }).setNegativeButton(R.string.dialog_error_dismiss, (dialog, which) -> {
                         dialog.dismiss();
                     parentActivity.resumeScanning();
