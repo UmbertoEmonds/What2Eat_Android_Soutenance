@@ -86,7 +86,7 @@ public class UtilisateurRepository {
 
         UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
 
-        service.getUtilisateur(token, userId).enqueue(new Callback<Utilisateur>() {
+        service.getUtilisateur(userId, token).enqueue(new Callback<Utilisateur>() {
             @Override
             public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
                 utilisateur.setValue(response.body());
