@@ -28,16 +28,9 @@ public class RetrofitBuilder {
     }
 
     public static Retrofit getInstanceForOpenFoodAPI(){
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(chain -> {
-            Request newRequest  = chain.request().newBuilder()
-                    .addHeader("Authorization", "Token token=" + BuildConfig.OPEN_FOOD_API_KEY)
-                    .build();
-            return chain.proceed(newRequest);
-        }).build();
 
         if(retrofitOpenFood == null){
             retrofitOpenFood = new Retrofit.Builder()
-                    .client(client)
                     .baseUrl(BuildConfig.OPEN_FOOD_API)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

@@ -101,9 +101,11 @@ public class FrigoActivity extends AppCompatActivity {
     }
 
     public void updateUI(List<Ingredient> ingredients){
-        this.ingredientList = ingredients;
-        configureRecyclerView();
-        this.frigoAdapter.notifyDataSetChanged();
+        if(ingredients != null) {
+            this.ingredientList = ingredients;
+            configureRecyclerView();
+            this.frigoAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override

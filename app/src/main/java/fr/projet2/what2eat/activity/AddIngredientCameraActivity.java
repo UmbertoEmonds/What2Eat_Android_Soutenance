@@ -9,22 +9,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import java.util.List;
-
 import fr.projet2.what2eat.fragment.ScannerResultDialogFragment;
-import fr.projet2.what2eat.model.Ingredient;
-import fr.projet2.what2eat.model.OpenFoodAPI.ProduitOpenFood;
+import fr.projet2.what2eat.model.OpenFoodAPI.OpenFoodResponseAPI;
 import fr.projet2.what2eat.util.injections.Injection;
 import fr.projet2.what2eat.util.injections.ViewModelFactory;
-import fr.projet2.what2eat.viewmodel.IngredientOpenFoodViewModel;
 import fr.projet2.what2eat.viewmodel.IngredientViewModel;
 import me.dm7.barcodescanner.zbar.Result;
 import me.dm7.barcodescanner.zbar.ZBarScannerView;
 
 public class AddIngredientCameraActivity extends AppCompatActivity implements ZBarScannerView.ResultHandler {
 
-    private List<ProduitOpenFood> produits;
-    private IngredientOpenFoodViewModel mIngredientOpenFoodVM;
     private IngredientViewModel mIngredientVM;
     private ZBarScannerView mScannerView;
 
@@ -39,7 +33,6 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
 
     private void configureViewModel(){
         ViewModelFactory viewModelFactory = Injection.provideViewModelFactory();
-        mIngredientOpenFoodVM = new ViewModelProvider(this, viewModelFactory).get(IngredientOpenFoodViewModel.class);
 
         mIngredientVM = new ViewModelProvider(this, viewModelFactory).get(IngredientViewModel.class);
     }
@@ -47,25 +40,10 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
     private void getIngredient(String barcode){
         Log.v("AZERTY", barcode);
 
-        SharedPreferences sharedPref = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
-        String token = sharedPref.getString("token", null);
-        int userId = sharedPref.getInt("userId", -1);
-
-        mIngredientVM.getIngredientFromBarcode(barcode, token, userId).observe(this, produit -> {
-            updateUI(produit);
-
-            mIngredientVM.getIngredientFromBarcode(barcode, token, userId).removeObservers(this);
-        });
-
-        /*
-        mIngredientOpenFoodVM.getProduits(barcode).observe(this, produitOpenFoods -> {
-            updateUI(produitOpenFoods);
-            mIngredientOpenFoodVM.getProduits(barcode).removeObservers(this);
-        });
-        */
+        mIngredientVM.getIngredientFromBarcode(barcode).observe(this, this::updateUI);
     }
 
-    public void updateUI(Ingredient ingredient){
+    public void updateUI(OpenFoodResponseAPI ingredient){
         ScannerResultDialogFragment resultDialog = new ScannerResultDialogFragment();
         Bundle bundle = new Bundle();
 
@@ -78,23 +56,6 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
         resultDialog.setArguments(bundle);
 
         resultDialog.show(getSupportFragmentManager(), ScannerResultDialogFragment.TAG);
-    }
-
-    public void updateUI(List<ProduitOpenFood> produitOpenFoods){
-        this.produits = produitOpenFoods;
-
-        ScannerResultDialogFragment resultDialog = new ScannerResultDialogFragment();
-        Bundle bundle = new Bundle();
-
-        try {
-            bundle.putSerializable("INGREDIENT_FOUND", produitOpenFoods.get(0));
-        }catch (IndexOutOfBoundsException e){
-            bundle.putSerializable("INGREDIENT_FOUND", null);
-        }
-
-        resultDialog.setArguments(bundle);
-
-        new ScannerResultDialogFragment().show(getSupportFragmentManager(), ScannerResultDialogFragment.TAG);
     }
 
     @Override

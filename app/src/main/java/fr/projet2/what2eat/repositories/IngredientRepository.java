@@ -3,6 +3,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 
 import fr.projet2.what2eat.BuildConfig;
+import fr.projet2.what2eat.model.OpenFoodAPI.OpenFoodResponseAPI;
 import fr.projet2.what2eat.repositories.services.IngredientService;
 import fr.projet2.what2eat.util.RetrofitBuilder;
 import fr.projet2.what2eat.model.Ingredient;
@@ -13,11 +14,11 @@ import retrofit2.Response;
 public class IngredientRepository {
 
     private final MutableLiveData<List<Ingredient>> ingredients;
-    private final MutableLiveData<Ingredient> ingredient;
+    private final MutableLiveData<OpenFoodResponseAPI> openFoodResponseAPI;
 
     public IngredientRepository(){
         this.ingredients = new MutableLiveData<>();
-        this.ingredient = new MutableLiveData<>();
+        this.openFoodResponseAPI = new MutableLiveData<>();
     }
 
     public MutableLiveData<List<Ingredient>> getIngredients(){
@@ -41,24 +42,23 @@ public class IngredientRepository {
         return ingredients;
     }
 
-    public MutableLiveData<Ingredient> getIngredientFromBarcode(String barcode, String token, int userId){
-        IngredientService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(IngredientService.class);
+    public MutableLiveData<OpenFoodResponseAPI> getIngredientFromBarcode(String barcode){
+        IngredientService service = RetrofitBuilder.getInstanceForOpenFoodAPI().create(IngredientService.class);
 
-        service.getIngredientFromBarcode(barcode, token, userId).enqueue(new Callback<Ingredient>() {
+        service.getIngredientFromBarcode(barcode).enqueue(new Callback<OpenFoodResponseAPI>() {
             @Override
-            public void onResponse(Call<Ingredient> call, Response<Ingredient> response) {
+            public void onResponse(Call<OpenFoodResponseAPI> call, Response<OpenFoodResponseAPI> response) {
                 if(response.code() == 200){
-                    ingredient.setValue(response.body());
-                }else {
-                    ingredient.setValue(null);
+                    openFoodResponseAPI.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<Ingredient> call, Throwable t) {
-                ingredient.setValue(null);
+            public void onFailure(Call<OpenFoodResponseAPI> call, Throwable t) {
+                openFoodResponseAPI.setValue(null);
             }
         });
-        return ingredient;
+
+        return openFoodResponseAPI;
     }
 }

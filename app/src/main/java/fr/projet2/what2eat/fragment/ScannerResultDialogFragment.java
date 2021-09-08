@@ -2,7 +2,6 @@ package fr.projet2.what2eat.fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +16,13 @@ import com.squareup.picasso.Picasso;
 import fr.projet2.what2eat.R;
 import fr.projet2.what2eat.activity.AddIngredientCameraActivity;
 import fr.projet2.what2eat.model.Ingredient;
-import fr.projet2.what2eat.model.OpenFoodAPI.ProduitOpenFood;
+import fr.projet2.what2eat.model.OpenFoodAPI.OpenFoodResponseAPI;
+import fr.projet2.what2eat.model.OpenFoodAPI.ProductOpenFood;
 
 public class ScannerResultDialogFragment extends DialogFragment {
 
     public static final String TAG = "ScannerResultDialogFragment.TAG";
-    private Ingredient ingredient;
+    private ProductOpenFood ingredient;
     private AddIngredientCameraActivity parentActivity;
 
     @NonNull
@@ -34,7 +34,7 @@ public class ScannerResultDialogFragment extends DialogFragment {
         parentActivity = (AddIngredientCameraActivity) getActivity();
 
         if(bundle != null){
-            ingredient = (Ingredient) bundle.getSerializable("INGREDIENT_FOUND");
+            ingredient = ((OpenFoodResponseAPI) bundle.getSerializable("INGREDIENT_FOUND")).getProduct();
         }
 
         if(ingredient != null){
@@ -45,11 +45,11 @@ public class ScannerResultDialogFragment extends DialogFragment {
 
             Picasso.Builder picassoBuilder = new Picasso.Builder(view.getContext());
             picassoBuilder.listener((picasso, uri, exception) -> ingredientImg.setImageResource(R.drawable.outline_broken_image_black_24));
-            picassoBuilder.build().load(ingredient.getUrlImage()).into(ingredientImg);
+            picassoBuilder.build().load(ingredient.getImageUrl()).into(ingredientImg);
 
             builder.setView(view)
                     .setTitle(R.string.dialog_title)
-                    .setMessage(ingredient.getNom())
+                    .setMessage(ingredient.getName())
                     .setPositiveButton(R.string.dialog_add, (dialog, which) -> {
 
                     }).setNegativeButton(R.string.dialog_error_dismiss, (dialog, which) -> {
