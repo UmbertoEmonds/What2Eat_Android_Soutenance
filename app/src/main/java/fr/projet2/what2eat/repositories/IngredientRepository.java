@@ -15,10 +15,12 @@ public class IngredientRepository {
 
     private final MutableLiveData<List<Ingredient>> ingredients;
     private final MutableLiveData<OpenFoodResponseAPI> openFoodResponseAPI;
+    private final MutableLiveData<Ingredient> ingredientAdded;
 
     public IngredientRepository(){
         this.ingredients = new MutableLiveData<>();
         this.openFoodResponseAPI = new MutableLiveData<>();
+        this.ingredientAdded = new MutableLiveData<>();
     }
 
     public MutableLiveData<List<Ingredient>> getIngredients(){
@@ -60,5 +62,23 @@ public class IngredientRepository {
         });
 
         return openFoodResponseAPI;
+    }
+
+    public MutableLiveData<Ingredient> addIngredient(String token, int userId, Ingredient ingredient){
+        IngredientService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(IngredientService.class);
+
+        service.addIngredient(token, userId, ingredient).enqueue(new Callback<Ingredient>() {
+            @Override
+            public void onResponse(Call<Ingredient> call, Response<Ingredient> response) {
+                ingredientAdded.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Ingredient> call, Throwable t) {
+                ingredientAdded.setValue(null);
+            }
+        });
+
+        return ingredientAdded;
     }
 }

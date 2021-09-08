@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import fr.projet2.what2eat.fragment.ScannerResultDialogFragment;
+import fr.projet2.what2eat.model.Ingredient;
 import fr.projet2.what2eat.model.OpenFoodAPI.OpenFoodResponseAPI;
 import fr.projet2.what2eat.util.injections.Injection;
 import fr.projet2.what2eat.util.injections.ViewModelFactory;
@@ -21,6 +22,10 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
 
     private IngredientViewModel mIngredientVM;
     private ZBarScannerView mScannerView;
+
+    public IngredientViewModel getmIngredientVM() {
+        return mIngredientVM;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,8 +43,6 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
     }
 
     private void getIngredient(String barcode){
-        Log.v("AZERTY", barcode);
-
         mIngredientVM.getIngredientFromBarcode(barcode).observe(this, this::updateUI);
     }
 
@@ -63,6 +66,8 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
         super.onResume();
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
+
+        Log.v("AZERTY", "onResume");
     }
 
     @Override
@@ -84,6 +89,13 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
 
     public void resumeScanning(){
         mScannerView.resumeCameraPreview(this);
+    }
+
+    public void addIngredient(String token, int userId, Ingredient ingredientToAdd){
+        mIngredientVM.addIngredient(token, userId, ingredientToAdd).observe(this, ingredient -> {
+            
+            mIngredientVM.addIngredient(token, userId, ingredientToAdd).removeObservers(this);
+        });
     }
 
 }

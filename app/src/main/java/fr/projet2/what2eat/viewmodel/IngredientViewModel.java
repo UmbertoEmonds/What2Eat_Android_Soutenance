@@ -25,4 +25,8 @@ public class IngredientViewModel extends ViewModel {
         return ingredientRepository.getIngredientFromBarcode(barcode);
     }
 
+    public MutableLiveData<Ingredient> addIngredient(String token, int userId, Ingredient ingredient){
+        return ingredientRepository.addIngredient(token, userId, ingredient);
+    }
+
 }

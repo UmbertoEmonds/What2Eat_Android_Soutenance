@@ -1,5 +1,7 @@
 package fr.projet2.what2eat.repositories;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
@@ -80,6 +82,7 @@ public class UtilisateurRepository {
 
         return ingredients;
     }
+<<<<<<< HEAD
     public MutableLiveData<Utilisateur> getUtilisateur(String token, int userId){
 
         UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
@@ -99,4 +102,6 @@ public class UtilisateurRepository {
         return utilisateur;
     }
 
+=======
+>>>>>>> 2126b8c89c60c0e0f6bd915e9d03363a8d1d9174
 }

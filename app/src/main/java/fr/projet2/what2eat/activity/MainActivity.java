@@ -27,10 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
         configureViewModel();
 
+<<<<<<< HEAD
         Intent myIntent = new Intent(this, LoginActivity.class);
         startActivity(myIntent);
 
         /*
+=======
+>>>>>>> 2126b8c89c60c0e0f6bd915e9d03363a8d1d9174
         SharedPreferences sharedPref = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         String token = sharedPref.getString("token", null);
         int userId = sharedPref.getInt("userId", -1);
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             verifyToken(token, userId);
         }else {
             goToLoginActivity();
-        }*/
+        }
     }
 
     private void verifyToken(String token, int userId){

@@ -108,23 +108,20 @@ public class LoginActivity extends AppCompatActivity {
             String password = mPasswordET.getText().toString().trim();
 
             mUtilisateurVM.login(email, password).observe(this, utilisateur -> {
-                if(getLifecycle().getCurrentState() == Lifecycle.State.RESUMED){
-                    onLoginResponse(utilisateur);
+                onLoginResponse(utilisateur);
 
-                    // supprimer l'observeur pour eviter les executions multiples
-                    mUtilisateurVM.login(email, password).removeObservers(this);
-                }
+                // supprimer l'observeur pour eviter les executions multiples
+                mUtilisateurVM.login(email, password).removeObservers(this);
             });
         });
     }
 
     private void onLoginResponse(Utilisateur user){
         if(user != null){
-            Intent intent = new Intent(LoginActivity.this, FrigoActivity.class);
-            intent.putExtra("utilisateur", user);
-
             saveTokenToSharedPrefs(user.getToken(), user.getId());
 
+            Intent intent = new Intent(LoginActivity.this, FrigoActivity.class);
+            intent.putExtra("utilisateur", user);
             startActivity(intent);
         }else {
             Snackbar.make(contextView, getString(R.string.id_mdp_error), Snackbar.LENGTH_SHORT).show();
@@ -134,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
     private void saveTokenToSharedPrefs(String token, int userId){
         SharedPreferences sharedPref = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
+
         editor.putString("token", token);
         editor.putInt("userId", userId);
         editor.apply();
