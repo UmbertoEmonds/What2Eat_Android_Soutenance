@@ -1,5 +1,7 @@
 package fr.projet2.what2eat.repositories;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
@@ -80,5 +82,4 @@ public class UtilisateurRepository {
 
         return ingredients;
     }
-
 }

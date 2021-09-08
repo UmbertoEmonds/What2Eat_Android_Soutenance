@@ -2,6 +2,8 @@ package fr.projet2.what2eat.fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.Observer;
 
 import com.squareup.picasso.Picasso;
 
@@ -18,6 +21,7 @@ import fr.projet2.what2eat.activity.AddIngredientCameraActivity;
 import fr.projet2.what2eat.model.Ingredient;
 import fr.projet2.what2eat.model.OpenFoodAPI.OpenFoodResponseAPI;
 import fr.projet2.what2eat.model.OpenFoodAPI.ProductOpenFood;
+import fr.projet2.what2eat.util.Mapping;
 
 public class ScannerResultDialogFragment extends DialogFragment {
 
@@ -52,6 +56,15 @@ public class ScannerResultDialogFragment extends DialogFragment {
                     .setTitle(R.string.dialog_title)
                     .setMessage(ingredient.getName())
                     .setPositiveButton(R.string.dialog_add, (dialog, which) -> {
+
+                        SharedPreferences sharedPref = parentActivity.getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
+                        String token = sharedPref.getString("token", null);
+                        int userId = sharedPref.getInt("userId", -1);
+
+                        Ingredient ingredientToAdd = Mapping.mapOpenFoodToIngredient(ingredient);
+
+                        parentActivity.addIngredient(token, userId, ingredientToAdd);
+                        dialog.dismiss();
 
                     }).setNegativeButton(R.string.dialog_error_dismiss, (dialog, which) -> {
                         dialog.dismiss();

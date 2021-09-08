@@ -27,10 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         configureViewModel();
 
-        Intent myIntent = new Intent(this, FrigoActivity.class);
-        startActivity(myIntent);
-
-        /*
         SharedPreferences sharedPref = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         String token = sharedPref.getString("token", null);
         int userId = sharedPref.getInt("userId", -1);
@@ -39,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             verifyToken(token, userId);
         }else {
             goToLoginActivity();
-        }*/
+        }
     }
 
     private void verifyToken(String token, int userId){

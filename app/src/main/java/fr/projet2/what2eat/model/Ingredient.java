@@ -13,7 +13,7 @@ public class Ingredient implements Serializable {
     private String code;
 
     @SerializedName("quantite")
-    private int quantite;
+    private String quantite;
 
     @SerializedName("unite")
     private String unite;
@@ -22,9 +22,9 @@ public class Ingredient implements Serializable {
     private String urlImage;
 
     @SerializedName("categorie")
-    private int categorie;
+    private String categorie;
 
-    public Ingredient(String nom, String code, int quantite, String unite, String urlImage, int categorie) {
+    public Ingredient(String nom, String code, String quantite, String unite, String urlImage, String categorie) {
         this.nom = nom;
         this.code = code;
         this.quantite = quantite;
@@ -49,11 +49,11 @@ public class Ingredient implements Serializable {
         this.code = code;
     }
 
-    public int getQuantite() {
+    public String getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(int quantite) {
+    public void setQuantite(String quantite) {
         this.quantite = quantite;
     }
 
@@ -73,11 +73,11 @@ public class Ingredient implements Serializable {
         this.urlImage = urlImage;
     }
 
-    public int getCategorie() {
+    public String getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(int categorie) {
+    public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
 }

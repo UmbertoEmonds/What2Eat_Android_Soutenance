@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +23,6 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import fr.projet2.what2eat.R;
 import fr.projet2.what2eat.adapter.FrigoAdapter;
-import fr.projet2.what2eat.fragment.ScannerResultDialogFragment;
 import fr.projet2.what2eat.util.injections.Injection;
 import fr.projet2.what2eat.util.injections.ViewModelFactory;
 import fr.projet2.what2eat.model.Ingredient;
@@ -46,7 +44,7 @@ public class FrigoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frigo);
 
-        /*mFrigoRV = findViewById(R.id.frigoRV);
+        mFrigoRV = findViewById(R.id.frigoRV);
         mProfileBtn = findViewById(R.id.profile_image_toolbar);
         mFAB = findViewById(R.id.frigoFAB);
 
@@ -75,7 +73,6 @@ public class FrigoActivity extends AppCompatActivity {
                 // ajout manuel de l'ingredient
             }
         });
-        */
     }
 
     private void configureViewModel(){
@@ -90,7 +87,7 @@ public class FrigoActivity extends AppCompatActivity {
 
         mUserVM.getIngredients(token, userId).observe(this, ingredients ->  {
             updateUI(ingredients);
-            mUserVM.verifyToken(token, userId).removeObservers(this);
+            mUserVM.getIngredients(token, userId).removeObservers(this);
         });
     }
 
