@@ -21,6 +21,6 @@ public interface UtilisateurService {
     @GET("utilisateur/frigo")
     Call<List<Ingredient>> getIngredients(@Query("token") String token, @Query("userId") int userId);
 
-    @POST("utilisateur/")
-    Call<Utilisateur> getUtilisateur(@Query("token") String token, @Query("userId") int userId);
+    @GET("utilisateur/{id}/")
+    Call<Utilisateur> getUtilisateur(@Path("id") int userId, @Query("token") String token);
 }

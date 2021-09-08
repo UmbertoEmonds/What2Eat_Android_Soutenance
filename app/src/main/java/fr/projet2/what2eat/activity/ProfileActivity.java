@@ -88,6 +88,8 @@ public class ProfileActivity extends AppCompatActivity {
             changeVisibily(View.INVISIBLE);
 
         });
+
+        configureViewModel();
         getIngredients();
 
     }
@@ -96,6 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
         findViewById(R.id.linearPasswordConfirm).setVisibility(change);
         findViewById(R.id.linearBtn).setVisibility(change);
     }
+
     private void configureViewModel(){
         ViewModelFactory viewModelFactory = Injection.provideViewModelFactory();
         mUserVM = new ViewModelProvider(this, viewModelFactory).get(UtilisateurViewModel.class);
