@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -106,14 +107,27 @@ public class FrigoActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // depuis AddIngredientCameraActivity
+        if(requestCode == 45){
+            if(data != null){
+                Bundle bundle = data.getExtras();
+                Ingredient ingredientAdded = (Ingredient) bundle.getSerializable("INGREDIENT_ADDED");
+            }
+        }
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        //on verifie que le code correspond bien
+        //on verifie que le code correspond bien a la requete
         if(requestCode == 100){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 Intent intent = new Intent(this, AddIngredientCameraActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 45);
             }
         }
     }

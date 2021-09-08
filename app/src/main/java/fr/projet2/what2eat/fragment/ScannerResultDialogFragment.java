@@ -76,7 +76,7 @@ public class ScannerResultDialogFragment extends DialogFragment {
                     .setPositiveButton(R.string.dialog_error_add, (dialog, which) -> {
 
                     })
-                    .setNegativeButton(R.string.dialog_error_cancel, (dialog, which) -> {
+                    .setNegativeButton(R.string.dialog_error_retry, (dialog, which) -> {
                         dialog.dismiss();
                         parentActivity.resumeScanning();
                     });

@@ -18,6 +18,8 @@
             android:layout_width="80sp"
             android:layout_height="80sp"
             android:layout_gravity="center"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
             tools:src="@drawable/tomate" />
 
         <LinearLayout

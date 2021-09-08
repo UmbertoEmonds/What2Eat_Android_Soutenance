@@ -1,6 +1,7 @@
 package fr.projet2.what2eat.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -93,7 +94,13 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
 
     public void addIngredient(String token, int userId, Ingredient ingredientToAdd){
         mIngredientVM.addIngredient(token, userId, ingredientToAdd).observe(this, ingredient -> {
+
+            Intent intent = new Intent();
+            intent.putExtra("INGREDIENT_ADDED", ingredient);
+
+            setResult(45, intent);
             finish();
+
             mIngredientVM.addIngredient(token, userId, ingredientToAdd).removeObservers(this);
         });
     }
