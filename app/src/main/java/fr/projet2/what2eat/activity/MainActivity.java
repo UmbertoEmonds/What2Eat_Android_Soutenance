@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         configureViewModel();
 
-        Intent myIntent = new Intent(this, FrigoActivity.class);
+        Intent myIntent = new Intent(this, LoginActivity.class);
         startActivity(myIntent);
 
         /*

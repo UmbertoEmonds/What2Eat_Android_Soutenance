@@ -80,5 +80,23 @@ public class UtilisateurRepository {
 
         return ingredients;
     }
+    public MutableLiveData<Utilisateur> getUtilisateur(String token, int userId){
+
+        UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
+
+        service.getUtilisateur(token, userId).enqueue(new Callback<Utilisateur>() {
+            @Override
+            public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
+                utilisateur.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Utilisateur> call, Throwable t) {
+                utilisateur.setValue(null);
+            }
+        });
+
+        return utilisateur;
+    }
 
 }

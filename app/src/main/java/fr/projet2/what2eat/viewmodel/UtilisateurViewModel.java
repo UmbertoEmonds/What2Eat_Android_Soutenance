@@ -28,5 +28,7 @@ public class UtilisateurViewModel extends ViewModel {
     public MutableLiveData<List<Ingredient>> getIngredients(String token, int userId){
         return this.utilisateurRepository.getIngredients(token, userId);
     }
-
+    public MutableLiveData<Utilisateur> getUtilisateur(String token, int userId){
+        return this.utilisateurRepository.getUtilisateur(token, userId);
+    }
 }

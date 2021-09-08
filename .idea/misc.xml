@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASTONLILLE09/Documents/project2astonandroid/app/src/main/res/drawable/custom_edit_text.xml" value="0.2703125" />
         <entry key="..\:/Users/ASTONLILLE09/Documents/project2astonandroid/app/src/main/res/layout/activity_frigo.xml" value="0.264" />
+        <entry key="..\:/Users/ASTONLILLE09/Documents/project2astonandroid/app/src/main/res/layout/activity_login.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/ASTONLILLE09/Documents/project2astonandroid/app/src/main/res/layout/activity_main.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/ASTONLILLE09/Documents/project2astonandroid/app/src/main/res/layout/activity_profile.xml" value="0.264" />
+        <entry key="..\:/Users/ASTONLILLE09/Documents/project2astonandroid/app/src/main/res/layout/activity_register.xml" value="0.23641304347826086" />
         <entry key="..\:/Users/ASTONLILLE09/Documents/project2astonandroid/app/src/main/res/layout/toolbar.xml" value="0.25407608695652173" />
       </map>
     </option>
