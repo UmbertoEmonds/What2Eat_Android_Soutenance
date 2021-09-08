@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.regex.Pattern;
 
@@ -37,6 +34,9 @@ public class ProfileActivity extends AppCompatActivity {
     private  TextView mEditErreur;
     private UtilisateurViewModel mUserVM;
     private ImageView mBackBtn;
+    private EditText mPasswordET;
+    private EditText mPasswordConfirmET;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +50,9 @@ public class ProfileActivity extends AppCompatActivity {
         mConfirmBtn = findViewById(R.id.mConfirmBtn);
         mCancelBtn = findViewById(R.id.mCancelBtn);
         mEditErreur = findViewById(R.id.editErreur);
-
         mBackBtn = findViewById(R.id.BackBtn);
+        mPasswordET = findViewById(R.id.password);
+        mPasswordConfirmET = findViewById(R.id.passwordConfirm);
 
         mBackBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, FrigoActivity.class);
@@ -61,12 +62,20 @@ public class ProfileActivity extends AppCompatActivity {
         mEditProfileInfosIV.setOnClickListener(v -> {
             if(isOnEditMode){
                 Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
-                if (!p.matcher(mFirstNameET.getText().toString()).find() &&
-                        !p.matcher(mLastNameET.getText().toString()).find() &&
-                            !p.matcher(mMailET.getText().toString()).find()) {
-
-
-
+                if (!p.matcher(mFirstNameET.getText().toString().trim()).find() &&
+                        !p.matcher(mLastNameET.getText().toString().trim()).find() &&
+                            !p.matcher(mMailET.getText().toString().trim()).find()) {
+                    SharedPreferences sharedPref = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
+                    String token = sharedPref.getString("token", null);
+                    int userId = sharedPref.getInt("userId", -1);
+                    mUserVM.updateUtilisateur(token, userId,mFirstNameET.getText().toString().trim(),mLastNameET.getText().toString().trim(),mMailET.getText().toString().trim()).observe(this, utilisateur -> {
+                        if(utilisateur != null){
+                            mFirstNameET.setText(utilisateur.getPrenom());
+                            mLastNameET.setText(utilisateur.getNom());
+                            mMailET.setText(utilisateur.getNom());
+                            mUserVM.verifyToken(token, userId).removeObservers(this);
+                        }
+                    });
                     // APPEL RESEAU
 
 
@@ -81,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
                     mEditErreur.setVisibility(View.VISIBLE);
                     mEditErreur.setText("Erreur de Saisie (A-z 0-9)");
                 }
-            } else {
+            }else {
                 mEditProfileInfosIV.setImageResource(R.drawable.outline_done_black_20);
                 mFirstNameET.setEnabled(true);
                 mLastNameET.setEnabled(true);
@@ -94,7 +103,19 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
         mConfirmBtn.setOnClickListener(v -> {
-
+            Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+            //faire l'egalite
+            if (!p.matcher(mPasswordET.getText().toString().trim()).find() &&
+                    !p.matcher(mPasswordConfirmET.getText().toString().trim()).find()) {
+                SharedPreferences sharedPref = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
+                String token = sharedPref.getString("token", null);
+                int userId = sharedPref.getInt("userId", -1);
+                mUserVM.updatePassword(token, userId, mPasswordET.getText().toString().trim()).observe(this, utilisateur -> {
+                    if (utilisateur != null) {
+                        //Faire un message de notification
+                    }
+                });
+            }
         });
         mCancelBtn.setOnClickListener(v -> {
             changeVisibily(View.INVISIBLE);
@@ -130,4 +151,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

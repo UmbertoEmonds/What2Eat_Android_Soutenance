@@ -205,7 +205,6 @@
                 android:weightSum="10">
 
                 <TextView
-                    android:id="@+id/password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -215,7 +214,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextPassword"
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20sp"
@@ -241,7 +240,6 @@
                 android:weightSum="10">
 
                 <TextView
-                    android:id="@+id/passwordConfirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -251,7 +249,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextPasswordConfirm"
+                    android:id="@+id/passwordConfirm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20sp"

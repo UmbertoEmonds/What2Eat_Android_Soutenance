@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -46,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         mRegisterTV = findViewById(R.id.register);
         mLoginBtn = findViewById(R.id.mLoginBtn);
         mMailET = findViewById(R.id.editTextEmail);
-        mPasswordET = findViewById(R.id.editTextPassword);
+        mPasswordET = findViewById(R.id.password);
 
         contextView = findViewById(R.id.root);
 
