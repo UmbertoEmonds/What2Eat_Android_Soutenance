@@ -20,7 +20,7 @@
             android:layout_gravity="end"
             android:layout_marginTop="20sp"
             android:layout_marginEnd="20sp"
-            app:srcCompat="@drawable/outline_edit_24" />
+            app:srcCompat="@drawable/outline_edit_black_20" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"

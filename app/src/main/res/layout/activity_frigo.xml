@@ -1,85 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondsable">
 
     <LinearLayout
-        android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <include
+            layout="@layout/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/background_toolbar"
-            android:orientation="vertical">
+            android:layout_height="wrap_content" />
 
-            <include
-                layout="@layout/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/light_grey"
-            android:orientation="horizontal"
-            android:visibility="visible" />
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Dans ma cuisine, il y a ..." />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectwhite">
+
+            </SearchView>
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/group3" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/whiteground"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center_horizontal"
-                android:text="@string/cuisine_title"
-                android:textSize="25sp" />
-        </LinearLayout>
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="10px"
+                android:text="Catégories :" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100px"
+                android:layout_marginTop="10px"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/frigoRV"
+                <Button
+                    android:id="@+id/Blegumes"
+                    android:layout_width="180px"
+                    android:layout_height="100px"
+                    android:layout_margin="2px"
+                    android:background="@drawable/legumes" />
+
+                <Button
+                    android:id="@+id/imageView5"
+                    android:layout_width="180px"
+                    android:layout_height="100px"
+
+                    android:layout_margin="2px"
+                    android:background="@drawable/meat" />
+
+                <Button
+                    android:id="@+id/imageView6"
+                    android:layout_width="180px"
+                    android:layout_height="100px"
+
+                    android:layout_margin="2px"
+                    android:background="@drawable/conserve" />
+
+                <Button
+                    android:id="@+id/imageView7"
+                    android:layout_width="180px"
+                    android:layout_height="100px"
+
+                    android:layout_margin="2px"
+                    android:background="@drawable/fruits" />
+
+                <Button
+                    android:id="@+id/imageView8"
+                    android:layout_width="180px"
+                    android:layout_height="100px"
+
+                    android:layout_margin="2px"
+                    android:background="@drawable/lait" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="180px"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2px"
+                    android:gravity="center"
+                    android:text="Légumes" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="180px"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2px"
+                    android:gravity="center"
+                    android:text="Viandes" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="180px"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2px"
+                    android:gravity="center"
+                    android:text="Conserves" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="180px"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2px"
+                    android:gravity="center"
+                    android:text="Fruits" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="180px"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2px"
+                    android:gravity="center"
+                    android:text="Crémeries" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10sp"
-                android:foregroundGravity="center">
+                android:layout_margin="10px"
+                android:orientation="horizontal">
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectanglesable"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/frigoFAB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="30sp"
-                android:clickable="true"
-                android:focusable="true"
-                android:src="@drawable/ic_add"
-                android:tint="#FFFFFF"
-                app:rippleColor="@color/white"
-                tools:srcCompat="@drawable/ic_add" />
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Poulet" />
 
-        </FrameLayout>
+                    <Button
+                        android:id="@+id/buttonM"
+                        android:layout_width="70px"
+                        android:layout_height="70px"
+                        android:background="@drawable/moins" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/buttonP"
+                        android:layout_width="70px"
+                        android:layout_height="70px"
+                        android:background="@drawable/plus" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectanglesable"
+                    android:gravity="center"
+                    android:orientation="horizontal"></LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 

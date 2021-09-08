@@ -44,7 +44,8 @@ public class ScannerResultDialogFragment extends DialogFragment {
             ImageView ingredientImg = view.findViewById(R.id.ingredientThumb);
 
             Picasso.Builder picassoBuilder = new Picasso.Builder(view.getContext());
-            picassoBuilder.listener((picasso, uri, exception) -> ingredientImg.setImageResource(R.drawable.outline_broken_image_black_24));
+
+            picassoBuilder.listener((picasso, uri, exception) -> ingredientImg.setImageResource(R.drawable.outline_broken_image_black_20));
             picassoBuilder.build().load(ingredient.getImageUrl()).into(ingredientImg);
 
             builder.setView(view)

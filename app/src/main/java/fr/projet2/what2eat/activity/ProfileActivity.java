@@ -39,7 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         mEditProfileInfosIV.setOnClickListener(v -> {
             if(!isOnEditMode){
-                mEditProfileInfosIV.setImageResource(R.drawable.outline_done_24);
+                mEditProfileInfosIV.setImageResource(R.drawable.outline_done_black_20);
                 mFirstNameET.setEnabled(true);
                 mLastNameET.setEnabled(true);
                 mMailET.setEnabled(true);
@@ -49,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 // APPEL RESEAU
 
-                mEditProfileInfosIV.setImageResource(R.drawable.outline_edit_24);
+                mEditProfileInfosIV.setImageResource(R.drawable.outline_edit_black_20);
                 mFirstNameET.setEnabled(false);
                 mLastNameET.setEnabled(false);
                 mMailET.setEnabled(false);
