@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.greenrobot.eventbus.EventBus;
+
 import fr.projet2.what2eat.fragment.ScannerResultDialogFragment;
 import fr.projet2.what2eat.model.Ingredient;
 import fr.projet2.what2eat.model.OpenFoodAPI.OpenFoodResponseAPI;
@@ -67,8 +69,6 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
         super.onResume();
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
-
-        Log.v("AZERTY", "onResume");
     }
 
     @Override
@@ -95,10 +95,7 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
     public void addIngredient(String token, int userId, Ingredient ingredientToAdd){
         mIngredientVM.addIngredient(token, userId, ingredientToAdd).observe(this, ingredient -> {
 
-            Intent intent = new Intent();
-            intent.putExtra("INGREDIENT_ADDED", ingredient);
-
-            setResult(45, intent);
+            EventBus.getDefault().postSticky(ingredient);
             finish();
 
             mIngredientVM.addIngredient(token, userId, ingredientToAdd).removeObservers(this);

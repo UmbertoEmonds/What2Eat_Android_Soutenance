@@ -10,8 +10,9 @@
     <color name="light_black">#3C3C3C</color>
     <color name="light_grey">#535353</color>
 
-    <color name="blue">#F6D59A</color>a9d9d9
-    <color name="blue_accentuation">#D7BA87</color>
+    <color name="sable_light">#f8deb1</color>
+    <color name="sable">#F6D59A</color>
+    <color name="sable_accentuation">#D7BA87</color>
 
     <color name="fond_sable">#F6D59A</color>
     
