@@ -57,7 +57,7 @@
             android:layout_height="96dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10sp"
-            android:background="#FFFFFF"
+
             android:src="@drawable/avatar"
             app:civ_border_color="@color/light_grey"
             app:civ_border_width="2dp" />
@@ -68,7 +68,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:gravity="center_horizontal"
-            android:text="@string/inscription"
             android:textSize="36sp"
             tools:text="John Doe" />
 
@@ -96,7 +95,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextFirstnameProfile"
+                    android:id="@+id/editTextPrenomProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20sp"
@@ -133,7 +132,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextLastnameProfile"
+                    android:id="@+id/editTextNomProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10sp"
@@ -292,14 +291,6 @@
                     android:ems="10"
                     android:text="Valider" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/editErreur"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Erreur de Saisie"
-                android:visibility="invisible" />
 
         </LinearLayout>
     </LinearLayout>
