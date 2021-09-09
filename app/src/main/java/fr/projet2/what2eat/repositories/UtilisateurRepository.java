@@ -102,10 +102,10 @@ public class UtilisateurRepository {
         return utilisateur;
     }
 
-    public MutableLiveData<Utilisateur> updateUtilisateur(String token, int userId,String firstName, String lastName, String mail) {
+    public MutableLiveData<Utilisateur> updateUtilisateur(String token, Utilisateur utilisateurmodif) {
         UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
 
-        service.updateUtilisateur(token,userId,firstName, lastName,mail).enqueue(new Callback<Utilisateur>() {
+        service.updateUtilisateur(token,utilisateurmodif.getId(),utilisateurmodif).enqueue(new Callback<Utilisateur>() {
             @Override
             public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
                 utilisateur.setValue(response.body());
@@ -124,6 +124,24 @@ public class UtilisateurRepository {
         UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
 
         service.updateUtilisateur(token,userId,password).enqueue(new Callback<Utilisateur>() {
+            @Override
+            public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
+                utilisateur.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Utilisateur> call, Throwable t) {
+                utilisateur.setValue(null);
+            }
+        });
+
+        return utilisateur;
+    }
+
+    public MutableLiveData<Utilisateur> updateUtilisateur(String token, int userId, String prenom, String nom, String mail) {
+        UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
+
+        service.updateUtilisateur(token,userId,prenom,nom,mail).enqueue(new Callback<Utilisateur>() {
             @Override
             public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
                 utilisateur.setValue(response.body());
