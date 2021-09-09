@@ -18,7 +18,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "API_URL", "\"hhttps://4472-87-98-211-82.ngrok.io/api/\"")
+            buildConfigField("String", "API_URL", "\"https://4472-87-98-211-82.ngrok.io/api/\"")
             buildConfigField("String", "OPEN_FOOD_API", "\"https://fr.openfoodfacts.org/api/v0/\"")
         }
         release {
