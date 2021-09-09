@@ -23,6 +23,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -36,7 +37,7 @@ import fr.projet2.what2eat.viewmodel.UtilisateurViewModel;
 public class FrigoActivity extends AppCompatActivity {
 
     private RecyclerView mFrigoRV;
-    private List<Ingredient> ingredientList;
+    private List<Ingredient> ingredientList = new ArrayList<>();
     private FrigoAdapter frigoAdapter;
 
     private UtilisateurViewModel mUserVM;
@@ -110,9 +111,26 @@ public class FrigoActivity extends AppCompatActivity {
         }
     }
 
-    @Subscribe(sticky = true, threadMode = ThreadMode.ASYNC)
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onIngredientAddedEvent(Ingredient ingredient){
-        this.ingredientList.add(ingredient);
+
+        boolean isAlreadyAdded = false;
+
+        for (Ingredient i : this.ingredientList){
+            if(ingredient.getCode().equals(i.getCode())){
+                int position = this.ingredientList.indexOf(i);
+
+                i.setQuantite(i.getQuantite() + 1);
+
+                this.ingredientList.set(position, i);
+                isAlreadyAdded = true;
+                break;
+            }
+        }
+        if(!isAlreadyAdded){
+            this.ingredientList.add(ingredient);
+        }
+
         this.frigoAdapter.notifyDataSetChanged();
     }
 

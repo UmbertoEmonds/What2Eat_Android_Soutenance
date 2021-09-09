@@ -1,17 +1,18 @@
 package fr.projet2.what2eat.activity;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.greenrobot.eventbus.EventBus;
 
+import fr.projet2.what2eat.R;
 import fr.projet2.what2eat.fragment.ScannerResultDialogFragment;
 import fr.projet2.what2eat.model.Ingredient;
 import fr.projet2.what2eat.model.OpenFoodAPI.OpenFoodResponseAPI;
@@ -26,9 +27,18 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
     private IngredientViewModel mIngredientVM;
     private ZBarScannerView mScannerView;
 
-    public IngredientViewModel getmIngredientVM() {
-        return mIngredientVM;
-    }
+    // on declare l'observer final et en variable globale pour être sur qu'il ne soit appelé qu'une seule fois !!
+    private final Observer<Ingredient> observeAddIngredient = new Observer<Ingredient>() {
+        @Override
+        public void onChanged(Ingredient ingredient) {
+            if(ingredient != null){
+                EventBus.getDefault().postSticky(ingredient);
+                finish();
+            }
+        }
+    };
+
+    private final Observer<OpenFoodResponseAPI> observeOpenFoodResponseAPI = this::updateUI;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,12 +51,13 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
 
     private void configureViewModel(){
         ViewModelFactory viewModelFactory = Injection.provideViewModelFactory();
-
         mIngredientVM = new ViewModelProvider(this, viewModelFactory).get(IngredientViewModel.class);
     }
 
     private void getIngredient(String barcode){
-        mIngredientVM.getIngredientFromBarcode(barcode).observe(this, this::updateUI);
+        mIngredientVM.getIngredientFromBarcode(barcode).removeObservers(this);
+
+        mIngredientVM.getIngredientFromBarcode(barcode).observe(this, observeOpenFoodResponseAPI);
     }
 
     public void updateUI(OpenFoodResponseAPI ingredient){
@@ -61,7 +72,12 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
 
         resultDialog.setArguments(bundle);
 
-        resultDialog.show(getSupportFragmentManager(), ScannerResultDialogFragment.TAG);
+        if(ingredient != null){
+            resultDialog.show(getSupportFragmentManager(), ScannerResultDialogFragment.TAG);
+        }else {
+            Snackbar.make(mScannerView, R.string.error_add_ingredient, Snackbar.LENGTH_SHORT).show();
+            resumeScanning();
+        }
     }
 
     @Override
@@ -93,13 +109,6 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
     }
 
     public void addIngredient(String token, int userId, Ingredient ingredientToAdd){
-        mIngredientVM.addIngredient(token, userId, ingredientToAdd).observe(this, ingredient -> {
-
-            EventBus.getDefault().postSticky(ingredient);
-            finish();
-
-            mIngredientVM.addIngredient(token, userId, ingredientToAdd).removeObservers(this);
-        });
+        mIngredientVM.addIngredient(token, userId, ingredientToAdd).observe(this, observeAddIngredient);
     }
-
 }

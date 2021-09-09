@@ -67,7 +67,14 @@ class IngredientViewHolder extends RecyclerView.ViewHolder{
         builder.listener((picasso, uri, exception) -> mIngredientImageIV.setImageResource(R.drawable.outline_broken_image_black_20));
         builder.build().load(ingredient.getUrlImage()).into(mIngredientImageIV);
 
-        mQteTV.setText(String.valueOf(ingredient.getQuantite()));
+        int qte = ingredient.getQuantite();
+
+        if(qte == 0){
+            mQteTV.setText(String.valueOf(1));
+        }else {
+            mQteTV.setText(String.valueOf(ingredient.getQuantite()));
+        }
+
         mNameTV.setText(ingredient.getNom());
     }
 
