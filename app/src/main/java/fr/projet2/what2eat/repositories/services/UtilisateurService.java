@@ -7,6 +7,7 @@ import fr.projet2.what2eat.model.Utilisateur;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -23,4 +24,10 @@ public interface UtilisateurService {
 
     @GET("utilisateur/{id}/")
     Call<Utilisateur> getUtilisateur(@Path("id") int userId, @Query("token") String token);
+
+    @PUT("utilisateur/")// a modifier
+    Call<Utilisateur> updateUtilisateur( @Query("token") String token, @Path("id") int userId,@Query("firstName") String firstName,@Query("lastName") String lastName,@Query("mail") String mail);
+
+    @PUT("utilisateur/")// a modifier
+    Call<Utilisateur> updateUtilisateur(@Query("token") String token, @Path("id") int userId,@Query("password") String password);
 }

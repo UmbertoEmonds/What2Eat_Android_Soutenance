@@ -2,6 +2,7 @@ package fr.projet2.what2eat.repositories;
 
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
@@ -101,4 +102,39 @@ public class UtilisateurRepository {
         return utilisateur;
     }
 
+    public MutableLiveData<Utilisateur> updateUtilisateur(String token, int userId,String firstName, String lastName, String mail) {
+        UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
+
+        service.updateUtilisateur(token,userId,firstName, lastName,mail).enqueue(new Callback<Utilisateur>() {
+            @Override
+            public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
+                utilisateur.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Utilisateur> call, Throwable t) {
+                utilisateur.setValue(null);
+            }
+        });
+
+        return utilisateur;
+    }
+
+    public MutableLiveData<Utilisateur> updatePassword(String token, int userId, String password) {
+        UtilisateurService service = RetrofitBuilder.getInstance(BuildConfig.API_URL).create(UtilisateurService.class);
+
+        service.updateUtilisateur(token,userId,password).enqueue(new Callback<Utilisateur>() {
+            @Override
+            public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
+                utilisateur.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Utilisateur> call, Throwable t) {
+                utilisateur.setValue(null);
+            }
+        });
+
+        return utilisateur;
+    }
 }

@@ -1,5 +1,6 @@
 package fr.projet2.what2eat.viewmodel;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -30,5 +31,13 @@ public class UtilisateurViewModel extends ViewModel {
     }
     public MutableLiveData<Utilisateur> getUtilisateur(String token, int userId){
         return this.utilisateurRepository.getUtilisateur(token, userId);
+    }
+
+    public MutableLiveData<Utilisateur> updateUtilisateur(String token,int userId,String firstName, String lastName, String mail) {
+        return this.utilisateurRepository.updateUtilisateur(token,userId,firstName, lastName, mail);
+    }
+
+    public  MutableLiveData<Utilisateur> updatePassword(String token, int userId, String password) {
+        return this.utilisateurRepository.updatePassword(token,userId,password);
     }
 }
