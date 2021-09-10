@@ -84,11 +84,14 @@ public class FrigoActivity extends AppCompatActivity {
                 removeBackgroundTo(mLegumesLL, mViandesLL, mConservesLL, mFruitsLL);
                 ingredientsFilter.clear();
 
-
                 for (Ingredient ingredient : ingredientList){
-                    if(ingredient.getCategorie().toLowerCase().contains("boisson")){
-                        ingredientsFilter.add(ingredient);
+                    if(ingredient.getCategorie() != null){
+                        String categoriesAccurate = ingredient.getCategorie().split(",")[1].toLowerCase();
+                        if(categoriesAccurate.contains("boisson")){
+                            ingredientsFilter.add(ingredient);
+                        }
                     }
+
                 }
 
                 frigoAdapter.setIngredients(ingredientsFilter);
@@ -108,11 +111,14 @@ public class FrigoActivity extends AppCompatActivity {
                 ingredientsFilter.clear();
 
                 for (Ingredient ingredient : ingredientList){
-                    if(ingredient.getCategorie().toLowerCase().contains("vegetable")
-                            || ingredient.getCategorie().toLowerCase().contains("legume")
-                            || ingredient.getCategorie().toLowerCase().contains("légume")){
-                        ingredientsFilter.add(ingredient);
+                    if(ingredient.getCategorie() != null){
+                        String categoriesAccurate = ingredient.getCategorie().split(",")[1].toLowerCase();
+
+                        if(categoriesAccurate.contains("legume") || categoriesAccurate.contains("légume")){
+                            ingredientsFilter.add(ingredient);
+                        }
                     }
+
                 }
 
                 frigoAdapter.setIngredients(ingredientsFilter);
@@ -133,9 +139,12 @@ public class FrigoActivity extends AppCompatActivity {
                 ingredientsFilter.clear();
 
                 for (Ingredient ingredient : ingredientList){
-                    if(ingredient.getCategorie().toLowerCase().contains("viande")
-                            || ingredient.getCategorie().toLowerCase().contains("meat")){
-                        ingredientsFilter.add(ingredient);
+                    if(ingredient.getCategorie() != null) {
+                        String categoriesAccurate = ingredient.getCategorie().split(",")[1].toLowerCase();
+
+                        if (categoriesAccurate.contains("viande")) {
+                            ingredientsFilter.add(ingredient);
+                        }
                     }
                 }
 
@@ -157,8 +166,13 @@ public class FrigoActivity extends AppCompatActivity {
                 ingredientsFilter.clear();
 
                 for (Ingredient ingredient : ingredientList){
-                    if(ingredient.getCategorie().toLowerCase().contains("conserve")){
-                        ingredientsFilter.add(ingredient);
+
+                    if(ingredient.getCategorie() != null){
+                        String categoriesAccurate = ingredient.getCategorie().split(",")[1].toLowerCase();
+
+                        if(categoriesAccurate.contains("conserve")){
+                            ingredientsFilter.add(ingredient);
+                        }
                     }
                 }
 
@@ -180,9 +194,13 @@ public class FrigoActivity extends AppCompatActivity {
                 ingredientsFilter.clear();
 
                 for (Ingredient ingredient : ingredientList){
-                    if(ingredient.getCategorie().toLowerCase().contains("fruit")
-                    && !ingredient.getCategorie().toLowerCase().contains("boisson")){
-                        ingredientsFilter.add(ingredient);
+
+                    if(ingredient.getCategorie() != null){
+                        String categoriesAccurate = ingredient.getCategorie().split(",")[1].toLowerCase();
+
+                        if(categoriesAccurate.contains("fruit")){
+                            ingredientsFilter.add(ingredient);
+                        }
                     }
                 }
 
