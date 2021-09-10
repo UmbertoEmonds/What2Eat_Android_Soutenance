@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 
 import fr.projet2.what2eat.R;
 import fr.projet2.what2eat.model.Utilisateur;

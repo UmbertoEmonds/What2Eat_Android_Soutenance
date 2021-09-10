@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,12 +40,19 @@ public class FrigoActivity extends AppCompatActivity {
 
     private RecyclerView mFrigoRV;
     private List<Ingredient> ingredientList = new ArrayList<>();
+    private List<Ingredient> ingredientsFilter = new ArrayList<>();
     private FrigoAdapter frigoAdapter;
 
     private UtilisateurViewModel mUserVM;
 
     private CircleImageView mProfileBtn;
     private FloatingActionButton mFAB;
+
+    private LinearLayout mBoissonsLL;
+    private LinearLayout mLegumesLL;
+    private LinearLayout mViandesLL;
+    private LinearLayout mConservesLL;
+    private LinearLayout mFruitsLL;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,12 +63,138 @@ public class FrigoActivity extends AppCompatActivity {
         mProfileBtn = findViewById(R.id.profile_image_toolbar);
         mFAB = findViewById(R.id.frigoFAB);
 
+        mBoissonsLL = findViewById(R.id.BoissonsLayout);
+        mLegumesLL = findViewById(R.id.LegumesLayout);
+        mViandesLL = findViewById(R.id.ViandesLayout);
+        mConservesLL = findViewById(R.id.ConservesLayout);
+        mFruitsLL = findViewById(R.id.FruitsLayout);
+
         configureViewModel();
         getIngredients();
 
         mProfileBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
+        });
+
+        mBoissonsLL.setOnClickListener(v -> {
+
+            if(mBoissonsLL.getBackground() == null){
+                setBackgroundTo(mBoissonsLL);
+                removeBackgroundTo(mLegumesLL, mViandesLL, mConservesLL, mFruitsLL);
+                ingredientsFilter.clear();
+
+
+                for (Ingredient ingredient : ingredientList){
+                    if(ingredient.getCategorie().toLowerCase().contains("boisson")){
+                        ingredientsFilter.add(ingredient);
+                    }
+                }
+
+                frigoAdapter.setIngredients(ingredientsFilter);
+            }else {
+                removeBackgroundTo(mLegumesLL, mViandesLL, mConservesLL, mFruitsLL, mBoissonsLL);
+                frigoAdapter.setIngredients(ingredientList);
+            }
+
+            frigoAdapter.notifyDataSetChanged();
+
+        });
+
+        mLegumesLL.setOnClickListener(v -> {
+            if(mLegumesLL.getBackground() == null){
+                setBackgroundTo(mLegumesLL);
+                removeBackgroundTo(mBoissonsLL, mViandesLL, mConservesLL, mFruitsLL);
+                ingredientsFilter.clear();
+
+                for (Ingredient ingredient : ingredientList){
+                    if(ingredient.getCategorie().toLowerCase().contains("vegetable")
+                            || ingredient.getCategorie().toLowerCase().contains("legume")
+                            || ingredient.getCategorie().toLowerCase().contains("légume")){
+                        ingredientsFilter.add(ingredient);
+                    }
+                }
+
+                frigoAdapter.setIngredients(ingredientsFilter);
+
+            }else {
+                removeBackgroundTo(mBoissonsLL, mViandesLL, mConservesLL, mFruitsLL, mLegumesLL);
+                frigoAdapter.setIngredients(ingredientList);
+            }
+
+            frigoAdapter.notifyDataSetChanged();
+
+        });
+
+        mViandesLL.setOnClickListener(v -> {
+            if(mViandesLL.getBackground() == null){
+                setBackgroundTo(mViandesLL);
+                removeBackgroundTo(mBoissonsLL, mLegumesLL, mConservesLL, mFruitsLL);
+                ingredientsFilter.clear();
+
+                for (Ingredient ingredient : ingredientList){
+                    if(ingredient.getCategorie().toLowerCase().contains("viande")
+                            || ingredient.getCategorie().toLowerCase().contains("meat")){
+                        ingredientsFilter.add(ingredient);
+                    }
+                }
+
+                frigoAdapter.setIngredients(ingredientsFilter);
+
+            }else {
+                removeBackgroundTo(mBoissonsLL, mViandesLL, mConservesLL, mFruitsLL, mLegumesLL);
+                frigoAdapter.setIngredients(ingredientList);
+            }
+
+            frigoAdapter.notifyDataSetChanged();
+
+        });
+
+        mConservesLL.setOnClickListener(v -> {
+            if(mConservesLL.getBackground() == null){
+                setBackgroundTo(mConservesLL);
+                removeBackgroundTo(mLegumesLL, mViandesLL, mBoissonsLL, mFruitsLL);
+                ingredientsFilter.clear();
+
+                for (Ingredient ingredient : ingredientList){
+                    if(ingredient.getCategorie().toLowerCase().contains("conserve")){
+                        ingredientsFilter.add(ingredient);
+                    }
+                }
+
+                frigoAdapter.setIngredients(ingredientsFilter);
+
+            }else {
+                removeBackgroundTo(mBoissonsLL, mViandesLL, mConservesLL, mFruitsLL, mLegumesLL);
+                frigoAdapter.setIngredients(ingredientList);
+            }
+
+            frigoAdapter.notifyDataSetChanged();
+
+        });
+
+        mFruitsLL.setOnClickListener(v -> {
+            if(mFruitsLL.getBackground() == null){
+                setBackgroundTo(mFruitsLL);
+                removeBackgroundTo(mConservesLL, mViandesLL, mBoissonsLL, mLegumesLL);
+                ingredientsFilter.clear();
+
+                for (Ingredient ingredient : ingredientList){
+                    if(ingredient.getCategorie().toLowerCase().contains("fruit")
+                    && !ingredient.getCategorie().toLowerCase().contains("boisson")){
+                        ingredientsFilter.add(ingredient);
+                    }
+                }
+
+                frigoAdapter.setIngredients(ingredientsFilter);
+                frigoAdapter.notifyDataSetChanged();
+
+            }else {
+                removeBackgroundTo(mBoissonsLL, mViandesLL, mConservesLL, mFruitsLL, mLegumesLL);
+                frigoAdapter.setIngredients(ingredientList);
+                frigoAdapter.notifyDataSetChanged();
+            }
+
         });
 
         mFAB.setOnClickListener(v -> {
@@ -79,6 +214,16 @@ public class FrigoActivity extends AppCompatActivity {
                 // ajout manuel de l'ingredient
             }
         });
+    }
+
+    private void setBackgroundTo(LinearLayout linearLayout){
+        linearLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_produit_item));
+    }
+
+    private void removeBackgroundTo(LinearLayout ...linearLayouts){
+        for (LinearLayout e : linearLayouts){
+            e.setBackground(null);
+        }
     }
 
     private void configureViewModel(){

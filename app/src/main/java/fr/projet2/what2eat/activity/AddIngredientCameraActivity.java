@@ -1,6 +1,7 @@
 package fr.projet2.what2eat.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,15 +27,13 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
 
     private IngredientViewModel mIngredientVM;
     private ZBarScannerView mScannerView;
+    private boolean isScanned = false;
 
     // on declare l'observer final et en variable globale pour être sur qu'il ne soit appelé qu'une seule fois !!
-    private final Observer<Ingredient> observeAddIngredient = new Observer<Ingredient>() {
-        @Override
-        public void onChanged(Ingredient ingredient) {
-            if(ingredient != null){
-                EventBus.getDefault().postSticky(ingredient);
-                finish();
-            }
+    private final Observer<Ingredient> observeAddIngredient = ingredient -> {
+        if(ingredient != null){
+            EventBus.getDefault().postSticky(ingredient);
+            finish();
         }
     };
 
@@ -55,8 +54,6 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
     }
 
     private void getIngredient(String barcode){
-        mIngredientVM.getIngredientFromBarcode(barcode).removeObservers(this);
-
         mIngredientVM.getIngredientFromBarcode(barcode).observe(this, observeOpenFoodResponseAPI);
     }
 
@@ -95,8 +92,11 @@ public class AddIngredientCameraActivity extends AppCompatActivity implements ZB
 
     @Override
     public void handleResult(Result rawResult) {
-        String barcode = rawResult.getContents();
-        getIngredient(barcode);
+        if(!isScanned){
+            String barcode = rawResult.getContents();
+            getIngredient(barcode);
+            isScanned = true;
+        }
     }
 
     @Override

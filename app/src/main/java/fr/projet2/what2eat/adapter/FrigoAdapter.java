@@ -24,6 +24,10 @@ public class FrigoAdapter extends RecyclerView.Adapter<IngredientViewHolder> {
         this.ingredients = ingredients;
     }
 
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     @NonNull
     @Override
     public IngredientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

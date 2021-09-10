@@ -29,7 +29,7 @@
     <string name="error_get_ingredients">Une erreur s\'est produite lors de la récuperation de votre Frigo.</string>
     <string name="error_add_ingredient">Une erreur s\'est produite lors l\'ajout de l\'ingredient.</string>
     <string name="error_saisie">Erreur de Saisie (A-z 0-9)</string>
-    
+
     <!-- scanner-result-dialog-fragment  -->
     <string name="dialog_title">Produit trouvé !</string>
     <string name="dialog_title_error">Produit introuvable</string>

@@ -69,19 +69,19 @@
                     android:id="@+id/LegumesLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <Button
-                        android:id="@+id/Legumes"
-                        android:layout_width="100px"
-                        android:layout_height="100px"
-                        android:layout_margin="2px"
-                        android:background="@drawable/legumes" />
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="2dp"
+                        app:srcCompat="@drawable/vegetable" />
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/textView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="2px"
@@ -93,17 +93,16 @@
                     android:id="@+id/ViandesLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <Button
-                        android:id="@+id/imageView5"
-                        android:layout_width="100px"
-                        android:layout_height="100px"
-
-                        android:layout_margin="2px"
-                        android:background="@drawable/meat" />
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="2dp"
+                        app:srcCompat="@drawable/meat" />
 
                     <TextView
                         android:id="@+id/textView10"
@@ -115,45 +114,19 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ConservesLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/imageView6"
-                        android:layout_width="100px"
-                        android:layout_height="100px"
-
-                        android:layout_margin="2px"
-                        android:background="@drawable/conserve" />
-
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="2px"
-                        android:gravity="center"
-                        android:text="Conserves" />
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/FruitsLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <Button
-                        android:id="@+id/imageView7"
-                        android:layout_width="100px"
-                        android:layout_height="100px"
-
-                        android:layout_margin="2px"
-                        android:background="@drawable/fruits" />
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="2dp"
+                        app:srcCompat="@drawable/fruits" />
 
                     <TextView
                         android:id="@+id/textView13"
@@ -166,28 +139,51 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/CremeriesLayout"
+                    android:id="@+id/ConservesLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <Button
-                        android:id="@+id/imageView8"
-                        android:layout_width="100px"
-                        android:layout_height="100px"
-
-                        android:layout_margin="2px"
-                        android:background="@drawable/lait" />
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="2dp"
+                        app:srcCompat="@drawable/canned_food" />
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/textView11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="2px"
                         android:gravity="center"
-                        android:text="Crémeries" />
+                        android:text="Conserves" />
+                </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/BoissonsLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="2dp"
+                        app:srcCompat="@drawable/soft_drink" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2px"
+                        android:gravity="center"
+                        android:text="Boissons" />
                 </LinearLayout>
 
             </LinearLayout>
