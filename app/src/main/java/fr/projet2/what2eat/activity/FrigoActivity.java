@@ -87,7 +87,7 @@ public class FrigoActivity extends AppCompatActivity {
                 for (Ingredient ingredient : ingredientList){
                     if(ingredient.getCategorie() != null){
                         String categoriesAccurate = ingredient.getCategorie().split(",")[1].toLowerCase();
-                        if(categoriesAccurate.contains("boisson")){
+                        if(categoriesAccurate.contains("boisson") || categoriesAccurate.contains("drink")){
                             ingredientsFilter.add(ingredient);
                         }
                     }

@@ -18,14 +18,14 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "API_URL", "\"https://8065-85-168-223-228.ngrok.io/api/\"")
+            buildConfigField("String", "API_URL", "\"https://eae9-92-184-123-74.ngrok.io/api/\"")
             buildConfigField("String", "OPEN_FOOD_API", "\"https://fr.openfoodfacts.org/api/v0/\"")
         }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "API_URL", "\"https://8065-85-168-223-228.ngrok.io/api/\"")
+            minifyEnabled true
+            buildConfigField("String", "API_URL", "\"https://eae9-92-184-123-74.ngrok.io/api/\"")
             buildConfigField("String", "OPEN_FOOD_API", "\"https://fr.openfoodfacts.org/api/v0/\"")
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
